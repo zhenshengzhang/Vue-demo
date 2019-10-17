@@ -36,6 +36,10 @@ module.exports = {
         test: /\.css$/,
         use: ['style-loader', 'css-loader']
       },
+      { // 配置 处理 scss 文件的规则
+        test: /\.scss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader']
+      },
       {
         test: /\.js$/,
         use: ['babel-loader'],
@@ -45,17 +49,18 @@ module.exports = {
         test: /\.vue$/,
         use: 'vue-loader'
       },
-      {
+      { // 处理 样式中字体文件路径的问题
         test: /\.ttf|woff|woff2|eot|svg$/,
         use: 'url-loader'
-      }, // 处理 样式中字体文件路径的问题
+      },
       {
+        // 配置 处理 样式表中图片的 loader规则
+        // 可以使用?给 url-loader传递参数，其中，有一个固定的参数，叫做 limit，表示图片的大小，需要给定一个 数值；
+        // limit 给定的这个数值，是 图片的大小，单位是 Byte（字节）
+        // 如果指定了 limit 参数，则只有图片的大小，小于给定的 值时候，才会转为base64格式的图片；否则，就不转换；
         test: /\.jpg|png|gif|bmp$/,
         use: 'url-loader?limit=7631&name=[hash:8]-[name].[ext]'
-      }, // 配置 处理 样式表中图片的 loader规则
-      // 可以使用?给 url-loader传递参数，其中，有一个固定的参数，叫做 limit，表示图片的大小，需要给定一个 数值；
-      // limit 给定的这个数值，是 图片的大小，单位是 Byte（字节）
-      // 如果指定了 limit 参数，则只有图片的大小，小于给定的 值时候，才会转为base64格式的图片；否则，就不转换；
+      },
     ]
 
   },

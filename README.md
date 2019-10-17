@@ -1,3 +1,8 @@
-Vue demo
+##Vue demo
 
-npm i  安装依赖包
+```
+npm i  
+
+npm run dev
+```
+    
