@@ -3,8 +3,9 @@
  
     <mt-header fixed title="Vue Demo"> </mt-header>
 
-    <router-view></router-view>
-
+    <transition>
+      <router-view></router-view>
+    </transition>
     <nav class="mui-bar mui-bar-tab">
       <router-link class="mui-tab-item" to="/home">
         <span class="mui-icon mui-icon-home"></span>
@@ -34,8 +35,18 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .app-container {
   padding-top: 40px;
+  padding-bottom: 50px;
+}
+
+.v-enter .v-leave-to {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.v-enter-active .v-leave-active {
+  transition: all 1s ease;
 }
 </style>
